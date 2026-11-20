@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard · Focus, Tasks & Links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">◐</span>
+      <span class="brand-name">Dashboard</span>
+    </div>
+    <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle light or dark mode" title="Toggle theme">
+      <span class="theme-icon">🌙</span>
+    </button>
+  </header>
+
+  <main class="container">
+    <!-- Greeting -->
+    <section class="card greeting-card" aria-label="Greeting">
+      <p class="clock" id="clock">--:--</p>
+      <p class="date" id="date">Loading…</p>
+      <h1 class="greeting">
+        <span id="greetingText">Hello</span><span id="nameSuffix"></span>
+      </h1>
+      <div class="name-row">
+        <label for="nameInput" class="sr-only">Your name</label>
+        <input id="nameInput" type="text" placeholder="Add your name…" maxlength="24" autocomplete="off" />
+        <button id="saveNameBtn" type="button" class="ghost-btn">Save</button>
+      </div>
+    </section>
+
+    <!-- Focus Timer -->
+    <section class="card timer-card" aria-label="Focus timer">
+      <h2 class="card-title">Focus Timer</h2>
+      <div class="timer-display" id="timerDisplay">25:00</div>
+      <div class="timer-controls">
+        <button id="startBtn" type="button" class="primary-btn">Start</button>
+        <button id="stopBtn" type="button" class="ghost-btn" disabled>Stop</button>
+        <button id="resetBtn" type="button" class="ghost-btn">Reset</button>
+      </div>
+      <div class="timer-custom">
+        <label for="durationInput">Minutes</label>
+        <input id="durationInput" type="number" min="1" max="90" value="25" />
+        <button id="setDurationBtn" type="button" class="ghost-btn">Set</button>
+      </div>
+    </section>
+
+    <!-- To-Do List -->
+    <section class="card todo-card" aria-label="To-do list">
+      <h2 class="card-title">To-Do List</h2>
+      <form id="todoForm" class="todo-form" autocomplete="off">
+        <label for="todoInput" class="sr-only">New task</label>
+        <input id="todoInput" type="text" placeholder="Add a task…" maxlength="120" required />
+        <button type="submit" class="primary-btn">Add</button>
+      </form>
+      <p id="todoMsg" class="todo-msg" role="status" aria-live="polite"></p>
+      <div class="todo-toolbar">
+        <label for="sortSelect">Sort</label>
+        <select id="sortSelect">
+          <option value="added">Order added</option>
+          <option value="alpha">A → Z</option>
+          <option value="status">Pending first</option>
+          <option value="done">Done first</option>
+        </select>
+        <button id="clearDoneBtn" type="button" class="link-btn">Clear done</button>
+      </div>
+      <ul id="todoList" class="todo-list"></ul>
+      <p id="emptyHint" class="empty-hint">No tasks yet — add one above.</p>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="card links-card" aria-label="Quick links">
+      <h2 class="card-title">Quick Links</h2>
+      <form id="linkForm" class="link-form" autocomplete="off">
+        <label for="linkName" class="sr-only">Link name</label>
+        <input id="linkName" type="text" placeholder="Name (e.g. GitHub)" maxlength="32" required />
+        <label for="linkUrl" class="sr-only">Link URL</label>
+        <input id="linkUrl" type="url" placeholder="https://…" required />
+        <button type="submit" class="primary-btn">Add</button>
+      </form>
+      <div id="linksList" class="links-list"></div>
+      <p id="linksEmpty" class="empty-hint">No links saved yet.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Data is saved in your browser. No account needed.</p>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
